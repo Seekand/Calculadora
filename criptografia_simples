@@ -1,0 +1,20 @@
+alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+while True:
+    dc = int(input('\033[1;30mGostaria de Criptografar[1] ou Descriptografar[2] ?: '))
+    print('Escreva a palavra que gostaria de', end=' ')
+    if dc == 1:
+        palavra = str(input('Criptografar: ')).upper()
+        dcl = 'CRIPTOGRAFADA'
+    if dc == 2:
+        palavra = str(input('Descriptografar: ')).upper()
+        dcl = 'DESCRIPTOGRAFADA'
+    chave = int(input('CHAVE: '))
+    pala = palavra.replace(' ', '')
+    pala_cript = ''
+    for letras in pala:
+        if dc == 1:
+            # -26 pra ele funcionar msm que ultrapasse o valor da lista, pois o python, tem indice negativo.
+            pala_cript += alfabeto[alfabeto.index(letras) + chave - 26]
+        elif dc == 2:
+            pala_cript += alfabeto[alfabeto.index(letras) - chave]
+    print(f'\nA PALAVRA: {palavra}, {dcl} com a cifra de cesar é: {pala_cript}')
